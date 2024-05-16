@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Word Scramble Game</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div class="bg-image"></div>
+    <div class="card">
+      <div class="card-title"><img src="Word Scramblle.svg" height="20px"/></div>
+      <div class="scrambled-word"></div>
+      <div class="hints">
+        <span>Tries
+          <p id="tries-remain">(3/5):</p>
+          <span class="tries" ></span>
+          <span class="tries" ></span>
+          <span class="tries"></span>
+          <span class="tries"></span>
+          <span class="tries"></span>
+        </span>
+        <span>Mistakes:
+          <p id="mistaken-letters"></p>
+        </span>
+      </div>
+      <div class="user-input">
+        <input type="text" class="inputValue" maxlength="1" />
+        <input type="text" class="inputValue" maxlength="1" />
+        <input type="text" class="inputValue" maxlength="1" />
+        <input type="text" class="inputValue" maxlength="1" />
+        <input type="text" class="inputValue" maxlength="1" />
+        <input type="text" class="inputValue" maxlength="1" />
+      </div>
+      <div class="controls">
+        <button id="random-btn">Random</button>
+        <button id="reset-btn">Reset</button>
+      </div>
+    </div>
+  </body>
+</html>
