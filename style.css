@@ -1,0 +1,204 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  font-family: "Outfit", sans-serif;
+}
+
+.bg-image {
+  position: absolute;
+  inset: 0;
+  background-image: url("bg-guess-the-word.png");
+  background-size: 100% 100%;
+  object-fit: contain;
+}
+
+.card {
+  padding-inline: 1em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 70vh;
+  width: 40vw;
+  min-width: max-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #030616;
+  border-radius: 20px;
+}
+
+.card > * {
+  /* outline: 3px solid green; */
+}
+.card .card-title img {
+  position: relative;
+  top: 200%;
+}
+.card .scrambled-word {
+  position: relative;
+  padding: 0.5em 1em;
+  width: 80%;
+  font-size: 2em;
+  color: #97a3b6;
+  text-align: center;
+  font-family: "Outfit", sans-serif;
+  background-color: #4a5567;
+  border-radius: 5px;
+  letter-spacing: 1rem;
+  user-select: none;
+  cursor: context-menu;
+}
+
+.card .scrambled-word.loading::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  z-index: 10;
+  height: 1em;
+  height: 50%;
+  aspect-ratio: 1/1;
+  /* background-color: rgba(255, 255, 255, 0.5); */
+  border-radius: 50%;
+  border: 5px solid #fff;
+  border-top-color: transparent;
+  transform: rotate(0deg);
+  animation: rotate 2000ms linear infinite;
+}
+
+.card .controls {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+
+.card .hints {
+  position: relative;
+  width: max-content;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  /* outline: 1px solid red; */
+  width: 80%;
+}
+
+.card .hints > span {
+  color: #4a5567;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow:1;
+  flex-basis:0;
+  margin-inline: 10px;
+}
+
+.card .hints span .tries {
+  display: inline-block;
+  margin-left:10px;
+  border-radius: 50%;
+  height: 7px;
+  width: 7px;
+  background-color: #4a5567;
+}
+
+.card .hints span .tries[data-tried] {
+  background-color: #7429C6;
+}
+
+.card .hints span p#mistaken-letters {
+  color: #97a3b6;
+}
+
+.card .user-input {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  transition: all 0.5s;
+}
+.card .user-input.match-found {
+  justify-content: center;
+  gap: 0px;
+
+}
+
+.user-input .inputValue {
+  position: relative;
+  font-size: 1.75rem;
+  width: 1.5em;
+  height: 1.5em;
+  color: #f2f5f9;
+  background-color: #030616;
+  font-weight: 400;
+  font-family: "Outfit", sans-serif;
+  text-align: center;
+  outline: 3px solid #4a5567;
+  border-radius: 5px;
+  border: none;
+  appearance: none;
+  transition: outline ease 500ms; 
+}
+.user-input.match-found .inputValue {
+  outline:none;
+  font-weight: 600;
+  width: 30px;
+}
+.user-input .inputValue.bounce{
+  outline: none;
+  animation:bounce 500ms linear ;
+}
+.user-input input:focus {
+  outline-color: #672171;
+}
+.card button {
+  width: fit-content;
+  font-size: 0.875rem;
+  font-family: inherit;
+  color: #fff;
+  padding: 0.5em 2em;
+  border-radius: 10px;
+  background-color: #c951e7;
+  border: none;
+  appearance: none;
+  box-shadow: 0 5px #672171;
+  cursor: pointer;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+} 
+@keyframes  bounce {
+  0%,50%,100% {top: 0px;}
+  25% {top:-50%;}
+  75% {top:50%;}
+}
+@media (max-width: 500px) {
+  .card {
+    width: 70vw;
+  }
+  .card .scrambled-word {
+    font-size: 1.5rem;
+  }
+  .user-input .inputValue {
+    font-size: 1.2rem;
+    width: 2em;
+    height: 2em;
+    margin-inline: 3px;
+  }
+}
